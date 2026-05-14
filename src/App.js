@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import './App.css';
+import { useTheme } from './context/ThemeContext';
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkTheme((prevTheme) => !prevTheme);
-  };
-
-  const themeClass = isDarkTheme ? 'dark' : 'light';
+  const { isDarkTheme, theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`App ${themeClass}`}>
+    <div className={`App ${theme}`}>
       <header className="header">
         <h1>{isDarkTheme ? 'Темная тема' : 'Светлая тема'}</h1>
         <button onClick={toggleTheme}>Сменить тему</button>
